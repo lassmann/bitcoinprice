@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title></title>
+	</head>
+	<body>
+
+        <h1>PRECIO DOLAR BITCOIN</h1>
+        <h2 id="price" style="color:red"></h2>
+		
+
+        <script>
+
+            (async () => {
+
+                let itbitRequest = await fetch('https://api.itbit.com/v1/markets/XBTUSD/ticker');
+                let itbitResponse
+                if (itbitRequest.ok) {
+                     itbitResponse = await itbitRequest.json();
+                } else {
+                    alert("HTTP-Error: " + itbitRequest.status);
+                }
+                let cryptomktRequest = await fetch('https://api.cryptomkt.com/v1/book?market=BTCARS&type=sell');
+                let cryptomktResponse
+                if (cryptomktRequest.ok) cryptomktResponse = await cryptomktRequest.json();
+                else alert("HTTP-Error: " + cryptomktRequest.status);
+                
+
+                const sellCryptomkt = cryptomktResponse.data[0].price;
+                const sellItbit = itbitResponse.bid;
+                const usdDolar = ((sellCryptomkt/sellItbit) * 0.9952) * 0.991
+                document.getElementById("price").innerHTML = `$ ${usdDolar.toFixed(2)}`;
+
+            })();
+
+        </script>
+	</body>
+
+</html>
