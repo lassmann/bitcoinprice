@@ -12,7 +12,32 @@
     <h1>PRECIO DOLAR BITCOIN</h1>
     <h2 id="price" style="color:red"></h2>
 
-
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+        <div id="tradingview_eaba0"></div>
+        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/BITMEX-XBTUSD/"
+                rel="noopener" target="_blank"><span class="blue-text">XBTUSD Chart</span></a> by TradingView</div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+            new TradingView.widget(
+                {
+                    "width": 980,
+                    "height": 610,
+                    "symbol": "BITMEX:XBTUSD",
+                    "interval": "5",
+                    "timezone": "Etc/UTC",
+                    "theme": "Dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "allow_symbol_change": true,
+                    "container_id": "tradingview_eaba0"
+                }
+            );
+        </script>
+    </div>
+    <!-- TradingView Widget END -->
     <script>
         (async () => {
             let itbitRequest = await fetch('https://api.itbit.com/v1/markets/XBTUSD/ticker');
@@ -26,6 +51,7 @@
             document.getElementById("price").innerHTML = `$ ${usdDolar.toFixed(2)}`;
         }
         )();
+
     </script>
 </body>
 
