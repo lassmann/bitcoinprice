@@ -26,13 +26,21 @@
                     "symbol": "BITMEX:XBTUSD",
                     "interval": "5",
                     "timezone": "Etc/UTC",
-                    "theme": "Dark",
+                    "theme": "Light",
                     "style": "1",
                     "locale": "en",
                     "toolbar_bg": "#f1f3f6",
                     "enable_publishing": false,
                     "allow_symbol_change": true,
-                    "container_id": "tradingview_eaba0"
+                    "container_id": "tradingview_eaba0",
+                    overrides: {
+                        "mainSeriesProperties.candleStyle.upColor": "white",
+                        "mainSeriesProperties.candleStyle.downColor": "black",
+                        "mainSeriesProperties.candleStyle.borderUpColor": "black",
+                        "mainSeriesProperties.candleStyle.borderDownColor": "white",
+                        "mainSeriesProperties.candleStyle.wickUpColor": "black",
+                        "mainSeriesProperties.candleStyle.wickDownColor": "white"
+                    }
                 }
             );
         </script>
